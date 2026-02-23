@@ -1,3 +1,5 @@
+import CardReview from "../components/CardReview"
+
 const MoviePage = () => {
     return (
         <>
@@ -6,9 +8,9 @@ const MoviePage = () => {
 
             <div>
                 <p className="row row-cols-3 mt-4">
-                    titolo film
-                    vari dettagli
-                    e recensioni
+                    <CardReview />
+                    <CardReview />
+                    <CardReview />
                 </p>
             </div>
         </>
