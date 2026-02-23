@@ -28,7 +28,7 @@ const CardMovie = () => {
                     Questo paragrafo verrà sostituito con l'abstract del film.
                 </p>
 
-                <Link to={`movies/1`} className="btn btn-primary">
+                <Link to={`movies/:id`} className="btn btn-primary">
                     See more
                 </Link>
             </div>
