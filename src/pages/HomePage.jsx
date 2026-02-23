@@ -1,3 +1,5 @@
+import CardMovie from "../components/CardMovie"
+
 const HomePage = () => {
     return (
         <>
@@ -9,6 +11,15 @@ const HomePage = () => {
                     qui ci sarà l'elenco dei movie
                 </p>
             </div>
+             <div className="row row-cols-3 mt-4">
+                <CardMovie />
+                <CardMovie />
+                <CardMovie />
+                <CardMovie />
+                <CardMovie />
+                <CardMovie />
+                <CardMovie />
+             </div>
         </>
     )
 }

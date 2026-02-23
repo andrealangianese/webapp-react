@@ -4,7 +4,7 @@ const CardMovie = () => {
     return (
         <div className="card mb-4">
             <img 
-                src="https://www.instagram.com/p/DRfiffxDCfP/" 
+                src="https://m.media-amazon.com/images/I/51tiJQiWMDL._UF1000,1000_QL80_.jpg" 
                 className="card-img-top" 
                 alt="Titolo del film" 
             />
