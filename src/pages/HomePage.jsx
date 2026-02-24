@@ -61,6 +61,18 @@ const movies = [
 ]
 
 const HomePage = () => {
+
+    //  eseguo funzione di rendering per farmi ritornare il listato dei movies
+
+    const renderMovies = () =>{
+        return movies.map(movie =>{
+            return (
+                <div className="col" key={movie.id}>
+                    <CardMovie movieProp={movie} />
+                </div>
+            )
+        })
+    }
     return (
         <>
             <h1 className="text-primary">And Movies </h1>
