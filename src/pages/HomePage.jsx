@@ -84,13 +84,8 @@ const HomePage = () => {
                 </p>
             </div>
              <div className="row row-cols-3 mt-4">
-                <CardMovie />
-                <CardMovie />
-                <CardMovie />
-                <CardMovie />
-                <CardMovie />
-                <CardMovie />
-                <CardMovie />
+                {/* applico la funzione di rendering */}
+                {renderMovies()}
              </div>
         </>
     )
