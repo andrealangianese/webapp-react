@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom"
 
-const CardMovie = () => {
+const CardMovie = (props) => {
+
+    // destrutturo le props
+
+    const { id, title, director, genre , abstract} = props.movieProp;
+    
     return (
         <div className="card mb-4">
             <img 
