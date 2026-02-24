@@ -4,36 +4,36 @@ const CardMovie = (props) => {
 
     // destrutturo le props
 
-    const { id, title, director, genre , abstract} = props.movieProp;
-    
+    const { id, title, director, genre , abstract, image , release_year} = props.movieProp;
+
     return (
         <div className="card mb-4">
             <img 
-                src="https://m.media-amazon.com/images/I/51tiJQiWMDL._UF1000,1000_QL80_.jpg" 
+                src={image} 
                 className="card-img-top" 
-                alt="Titolo del film" 
+                alt={title}
             />
             
             <div className="card-body">
-                <h5 className="card-title">Titolo del Film</h5>
+                <h5 className="card-title">{title}</h5>
                 
                 <p className="mb-1">
-                    <strong>Regista:</strong> Nome Regista
+                    <strong>Regista:</strong> {director}
                 </p>
                 
                 <p className="mb-1">
-                    <strong>Genere:</strong> Azione / Drammatico
+                    <strong>Genere:</strong> {genre}
                 </p>
                 
                 <p className="mb-2">
-                    <strong>Anno:</strong> 2024
+                    <strong>Anno:</strong> {release_year}
                 </p>
 
                 <p className="card-text">
-                    Questo paragrafo verrà sostituito con l'abstract del film.
+                    {abstract}
                 </p>
 
-                <Link to={`movies/:id`} className="btn btn-primary">
+                <Link to={`movies/${id}`} className="btn btn-primary">
                     See more
                 </Link>
             </div>
