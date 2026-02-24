@@ -30,7 +30,7 @@ const CardMovie = (props) => {
                 </p>
 
                 <p className="card-text">
-                    {abstract}
+                    <strong>Plot:</strong> {abstract}
                 </p>
 
                 <Link to={`movies/${id}`} className="btn btn-primary">

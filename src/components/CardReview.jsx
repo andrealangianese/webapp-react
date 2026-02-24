@@ -1,18 +1,23 @@
-const CardReview = () => {
+const CardReview = (props) => {
+
+    // destrutturo le props
+
+    const {name, vote, text} = props.reviewProp;
+
     return (
         <div className="card mb-4">
             <div className="card-body">
                 
                 <p className="card-text">
-                    Questo è il testo della recensione. Verrà sostituito con il contenuto reale della review.
+                   {text}
                 </p>
 
                 <p className="mb-1">
-                    <strong>Voto:</strong> 4/5
+                    <strong>Voto:</strong> {vote}
                 </p>
 
                 <address className="mb-0">
-                    <i>Recensione di: Nome Autore</i>
+                    <i>Recensione di: {name}</i>
                 </address>
 
             </div>
