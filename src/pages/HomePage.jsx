@@ -1,3 +1,11 @@
+// importiamo axios
+
+import axios from "axios"
+
+// importo usestate e useeffect
+
+import { useState, useEffect } from "react"
+
 import CardMovie from "../components/CardMovie"
 
 //importo dati temporanei per test
