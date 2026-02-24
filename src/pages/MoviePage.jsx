@@ -8,7 +8,7 @@ import { useState, useEffect } from "react"
 
 // importo useparams per gestire id dinamico
 
-import { useParams } from "react-router-dom";
+import { useParams , useNavigate} from "react-router-dom";
 
 import CardReview from "../components/CardReview"
 
@@ -23,6 +23,10 @@ const MoviePage = () => {
 
     const { id } = useParams();
 
+    // creo istanza di navigate per poter reindirizzare l'utente
+
+    const redirect =useNavigate()
+
     // imposto var di stato
 
     const [moviesReview, setMoviesReview] = useState({})
@@ -34,6 +38,7 @@ const MoviePage = () => {
             .then(res => { setMoviesReview(res.data) })
             .catch(err => {
                 console.log(err);
+                if(err.status = 404) redirect('/')
             })
     }
 
