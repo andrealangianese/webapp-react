@@ -8,12 +8,24 @@ import { useState, useEffect } from "react"
 
 import CardMovie from "../components/CardMovie"
 
+// setto endpoint da richiamare nella chiamata ajax
+
+const endpoint = 'http://localhost:3000/api/movies';
+
 
 const HomePage = () => {
 
     // imposto var di stato
 
     const [movies, setMovies] = useEffect([])
+
+    // funzione che gestirà la chiamata per index
+
+    const fetchMovies = () => {
+        axios.get(endpoint)
+        .then(res => {})
+        .catch(err => )
+    }
 
     //  eseguo funzione di rendering per farmi ritornare il listato dei movies
 
@@ -26,6 +38,11 @@ const HomePage = () => {
             )
         })
     }
+
+    // richiamo funzione solo al montaggio della pagina
+
+    useEffect(fetchMovies, [])
+    
     return (
         <>
             <h1 className="text-primary">And Movies </h1>
