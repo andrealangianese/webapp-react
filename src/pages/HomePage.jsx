@@ -17,14 +17,15 @@ const HomePage = () => {
 
     // imposto var di stato
 
-    const [movies, setMovies] = useEffect([])
+    const [movies, setMovies] = useState([])
 
     // funzione che gestirà la chiamata per index
 
     const fetchMovies = () => {
         axios.get(endpoint)
-        .then(res => {})
-        .catch(err => )
+        .then(res => {setMovies(res.data)})
+        .catch(err => {console.log(err);
+        })
     }
 
     //  eseguo funzione di rendering per farmi ritornare il listato dei movies
@@ -42,7 +43,7 @@ const HomePage = () => {
     // richiamo funzione solo al montaggio della pagina
 
     useEffect(fetchMovies, [])
-    
+
     return (
         <>
             <h1 className="text-primary">And Movies </h1>
