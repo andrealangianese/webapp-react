@@ -13,7 +13,7 @@ const CardReview = (props) => {
                 </p>
 
                 <p className="mb-1">
-                    <strong>Voto:</strong> {vote}
+                    <strong>Voto:</strong> {vote} / 5
                 </p>
 
                 <address className="mb-0">

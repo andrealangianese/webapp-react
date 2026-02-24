@@ -1,59 +1,58 @@
+// importiamo axios
+
+import axios from "axios"
+
+// importo usestate e useeffect
+
+import { useState, useEffect } from "react"
+
+// importo useparams per gestire id dinamico
+
+import { useParams } from "react-router-dom";
+
 import CardReview from "../components/CardReview"
+
+// setto endpoint da richiamare nella chiamata ajax
+
+const endpoint = 'http://localhost:3000/api/movies';
+
 
 const MoviePage = () => {
 
-    //importo dati temporanei per test
+    // prendo id dinamicamente
 
-    const moviesReview = {
-        "id": 1,
-        "title": "Inception",
-        "director": "Christopher Nolan",
-        "genre": "Science Fiction",
-        "release_year": 2010,
-        "abstract": "A skilled thief is given a chance at redemption if he can successfully perform inception.",
-        "image": "inception.jpg",
-        "created_at": "2024-11-29T10:40:13.000Z",
-        "updated_at": "2025-05-22T10:55:27.000Z",
-        "reviews": [
-            {
-                "id": 1,
-                "movie_id": 1,
-                "name": "Alice",
-                "vote": 5,
-                "text": "A mind-bending masterpiece.",
-                "created_at": "2024-11-29T10:40:13.000Z",
-                "updated_at": "2024-11-29T10:40:13.000Z"
-            },
-            {
-                "id": 2,
-                "movie_id": 1,
-                "name": "Bob",
-                "vote": 4,
-                "text": "Great visuals and a compelling story.",
-                "created_at": "2024-11-29T10:40:13.000Z",
-                "updated_at": "2024-11-29T10:40:13.000Z"
-            },
-            {
-                "id": 3,
-                "movie_id": 1,
-                "name": "Charlie",
-                "vote": 3,
-                "text": "Confusing at times, but worth watching.",
-                "created_at": "2024-11-29T10:40:13.000Z",
-                "updated_at": "2024-11-29T10:40:13.000Z"
-            }
-        ]
+    const { id } = useParams();
+
+    // imposto var di stato
+
+    const [moviesReview, setMoviesReview] = useState({})
+
+    // funzione che gestirà la chiamata per show
+
+    const fetchMovieReview = () => {
+        axios.get(`${endpoint}/${id}`)
+            .then(res => { setMoviesReview(res.data) })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     //  eseguo funzione di rendering per farmi ritornare il listato dei movies
 
     const renderReviews = () => {
-        return moviesReview.reviews.map(review => {
+        return moviesReview.reviews?.map(review => {
             return (
-                <CardReview key={review.id} reviewProp ={review} />
+                <CardReview key={review.id} reviewProp={review} />
             )
         })
     }
+
+    // richiamo funzione solo al montaggio della pagina, facendo così ogni volta che cambia id, riparte la chiamata.
+
+    useEffect(() => {
+        fetchMovieReview()
+    }, [id])
+
 
     return (
         <>
