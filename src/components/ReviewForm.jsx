@@ -42,8 +42,12 @@ export default function ReviewForm(props) {
             }
         })
             .then(res => {
-                console.log(res.data);
-                // qui potrei aggiungere logica per aggiornare la lista delle recensioni senza ricaricare la pagina
+                // quando avviene l'invio del form ripulsco i campi
+                setFormData({
+                    name: '',
+                    text: '',
+                    vote: 1
+                })
             })
             .catch(err => {
                 console.log(err);
