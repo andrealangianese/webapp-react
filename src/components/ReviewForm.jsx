@@ -5,7 +5,10 @@ import { useState } from "react"
 
 import axios from "axios"
 
-export default function ReviewForm() {  
+export default function ReviewForm(props) {  
+
+    // destrutturo props per prendere id del movie a cui associare la recensione
+    const { movie_id } = props;
 
     // imposto var di stato per gestire i dati del form
 

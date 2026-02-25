@@ -72,7 +72,8 @@ const MoviePage = () => {
                     {renderReviews()}
                 </p>
                 <section className="mt-4">
-                    <ReviewForm />
+                    {/* destrutturo con props e vado a prendere valore da var di stato */}
+                    <ReviewForm movie_id={moviesReview.id} />
                 </section>
             </div>
 
