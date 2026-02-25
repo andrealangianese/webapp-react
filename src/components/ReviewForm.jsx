@@ -8,7 +8,7 @@ import axios from "axios"
 export default function ReviewForm(props) {
 
     // destrutturo props per prendere id del movie a cui associare la recensione
-    const { movie_id } = props;
+    const { movie_id , ricaricaReviews } = props;
 
     // setto endpoint da richiamare nella chiamata ajax
 
@@ -48,6 +48,8 @@ export default function ReviewForm(props) {
                     text: '',
                     vote: 1
                 })
+                // richiamo con le props la funzione per ricaricare le recensioni e vedere subito quella appena inserita
+                ricaricaReviews()
             })
             .catch(err => {
                 console.log(err);

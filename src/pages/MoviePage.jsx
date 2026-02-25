@@ -73,7 +73,7 @@ const MoviePage = () => {
                 </p>
                 <section className="mt-4">
                     {/* destrutturo con props e vado a prendere valore da var di stato */}
-                    <ReviewForm movie_id={moviesReview.id} />
+                    <ReviewForm movie_id={moviesReview.id} ricaricaReviews={fetchMovieReview} />
                 </section>
             </div>
 
