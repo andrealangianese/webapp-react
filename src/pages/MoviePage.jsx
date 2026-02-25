@@ -8,9 +8,10 @@ import { useState, useEffect } from "react"
 
 // importo useparams per gestire id dinamico
 
-import { useParams , useNavigate} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import CardReview from "../components/CardReview"
+import ReviewForm from "../components/ReviewForm";
 
 // setto endpoint da richiamare nella chiamata ajax
 
@@ -25,7 +26,7 @@ const MoviePage = () => {
 
     // creo istanza di navigate per poter reindirizzare l'utente
 
-    const redirect =useNavigate()
+    const redirect = useNavigate()
 
     // imposto var di stato
 
@@ -38,7 +39,7 @@ const MoviePage = () => {
             .then(res => { setMoviesReview(res.data) })
             .catch(err => {
                 console.log(err);
-                if(err.status = 404) redirect('/')
+                if (err.status = 404) redirect('/')
             })
     }
 
@@ -70,7 +71,11 @@ const MoviePage = () => {
                     {/* applico la funzione di rendering */}
                     {renderReviews()}
                 </p>
+                <section className="mt-4">
+                    <ReviewForm />
+                </section>
             </div>
+
         </>
     )
 }
