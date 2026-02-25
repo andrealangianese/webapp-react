@@ -25,13 +25,19 @@ export default function ReviewForm(props) {
             [e.target.name]: e.target.value
         })
     }
+
+    // funzione per gestire l'invio del form
+    const handleSubmit = (e) => {
+        e.preventDefault()
+    
+    }
     return (
         <div className="card">
             <header className="card-header">
                 <h5>Add your review</h5>
             </header>
             <div className="card-body">
-                <form >
+                <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>Name</label>
                         <input type="text" name="name" className="form-control" value={formData.name} onChange={setFieldValue} />
