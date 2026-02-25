@@ -10,6 +10,10 @@ export default function ReviewForm(props) {
     // destrutturo props per prendere id del movie a cui associare la recensione
     const { movie_id } = props;
 
+    // setto endpoint da richiamare nella chiamata ajax
+    
+    const endpoint = `http://localhost:3000/api/movies/${movie_id}/reviews`;
+
     // imposto var di stato per gestire i dati del form
 
     const [formData, setFormData] = useState({
