@@ -5,13 +5,13 @@ import { useState } from "react"
 
 import axios from "axios"
 
-export default function ReviewForm(props) {  
+export default function ReviewForm(props) {
 
     // destrutturo props per prendere id del movie a cui associare la recensione
     const { movie_id } = props;
 
     // setto endpoint da richiamare nella chiamata ajax
-    
+
     const endpoint = `http://localhost:3000/api/movies/${movie_id}/reviews`;
 
     // imposto var di stato per gestire i dati del form
@@ -21,7 +21,7 @@ export default function ReviewForm(props) {
         text: '',
         vote: 1
     })
-    
+
     // funzione per gestire i cambiamenti nei campi del form
     const setFieldValue = (e) => {
         setFormData({
@@ -33,8 +33,24 @@ export default function ReviewForm(props) {
     // funzione per gestire l'invio del form
     const handleSubmit = (e) => {
         e.preventDefault()
-    
+
+        // gestione chiamata ajax per inviare i dati al server
+        axios.post(endpoint, formData, {
+            // specifico che i dati che sto inviando sono in formato json
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => {
+                console.log(res.data);
+                // qui potrei aggiungere logica per aggiornare la lista delle recensioni senza ricaricare la pagina
+            })
+            .catch(err => {
+                console.log(err);
+                // qui potrei gestire eventuali errori
+            })
     }
+
     return (
         <div className="card">
             <header className="card-header">
