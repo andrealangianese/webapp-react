@@ -12,20 +12,26 @@ import DefaultLayout from "./layouts/DefaultLayout"
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
+// importo il provider del contesto globale
+
+import { GlobalProvider } from "./../context/GlobalContext"
+
 
 function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<DefaultLayout />}>
-            <Route path="/" element={<HomePage/>}/>
-            <Route path="/movies/:id" element={<MoviePage/>}/>
-            <Route path="*" element={<NotFoundPage/>}/>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <GlobalProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<DefaultLayout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/movies/:id" element={<MoviePage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </GlobalProvider>
     </>
   )
 }
