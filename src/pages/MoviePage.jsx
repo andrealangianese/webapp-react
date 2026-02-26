@@ -13,12 +13,20 @@ import { useParams, useNavigate } from "react-router-dom";
 import CardReview from "../components/CardReview"
 import ReviewForm from "../components/ReviewForm";
 
+// importo hook per accedere al contesto globale
+
+import { useGlobalContext } from "../../context/GlobalContext";
+
 // setto endpoint da richiamare nella chiamata ajax
 
 const endpoint = 'http://localhost:3000/api/movies';
 
 
 const MoviePage = () => {
+
+    // attivo var di stato globale per gestire caricamento
+
+    const { setLoading } = useGlobalContext();
 
     // prendo id dinamicamente
 
@@ -35,11 +43,20 @@ const MoviePage = () => {
     // funzione che gestirà la chiamata per show
 
     const fetchMovieReview = () => {
+
+        // attivo caricamento (mostro loader mentre aspetto risposta)
+
+        setLoading(true);
+
         axios.get(`${endpoint}/${id}`)
             .then(res => { setMoviesReview(res.data) })
             .catch(err => {
                 console.log(err);
                 if (err.status = 404) redirect('/')
+            })
+            // quando la chiamata è finita, sia in caso di successo che di errore, disattivo caricamento (nascondo loader)
+            .finally(() => {
+                setLoading(false);
             })
     }
 
