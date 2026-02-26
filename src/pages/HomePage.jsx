@@ -8,12 +8,20 @@ import { useState, useEffect } from "react"
 
 import CardMovie from "../components/CardMovie"
 
+// importo hook per accedere al contesto globale
+
+import { useGlobalContext } from "../../context/GlobalContext";
+
 // setto endpoint da richiamare nella chiamata ajax
 
 const endpoint = 'http://localhost:3000/api/movies';
 
 
 const HomePage = () => {
+
+    // attivo var di stato globale per gestire caricamento
+
+    const { setLoading } = useGlobalContext();
 
     // imposto var di stato
 
@@ -22,10 +30,21 @@ const HomePage = () => {
     // funzione che gestirà la chiamata per index
 
     const fetchMovies = () => {
+
+        // attivo caricamento (mostro loader mentre aspetto risposta)
+
+        setLoading(true);
+
         axios.get(endpoint)
-        .then(res => {setMovies(res.data)})
-        .catch(err => {console.log(err);
-        })
+            .then(res => { setMovies(res.data) })
+            .catch(err => {
+                console.log(err);          
+            })
+
+            // quando la chiamata è finita, sia in caso di successo che di errore, disattivo caricamento (nascondo loader)
+            .finally(() => {
+                setLoading(false);
+            })
     }
 
     //  eseguo funzione di rendering per farmi ritornare il listato dei movies
@@ -54,10 +73,10 @@ const HomePage = () => {
                     qui ci sarà l'elenco dei movie
                 </p>
             </div>
-             <div className="row row-cols-3 mt-4">
+            <div className="row row-cols-3 mt-4">
                 {/* applico la funzione di rendering */}
                 {renderMovies()}
-             </div>
+            </div>
         </>
     )
 }
